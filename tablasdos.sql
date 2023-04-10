@@ -109,6 +109,17 @@ CREATE TABLE publicacion(
     fuerza INTEGER
 );
 
+#Poblar la tabla publicacion para ver si se conecta con java
+INSERT INTO publicacion (mensaje, megusta, fuerza, usuaria_id)
+VALUES("hoy desperté más feliz", 5, 3, 2);
+
+INSERT INTO publicacion (mensaje, megusta, fuerza, usuaria_id)
+VALUES("ayer pude levantar 50 kilos en el gym", 5, 9, 3);
+
+INSERT INTO publicacion (mensaje, megusta, fuerza, usuaria_id)
+VALUES("hoy desperté más feliz", 5, 3, 2);
+
+
 #Comentarios a las publicaciones
 CREATE TABLE comentarios(
 	comentario_id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -149,7 +160,22 @@ ALTER TABLE logro ADD usuaria_id INTEGER NOT NULL;
 ALTER TABLE logro
 ADD FOREIGN KEY (usuaria_id) REFERENCES usuaria (usuaria_id);
 
+#datetime indica fecha y hora
+CREATE TABLE horaTomada(
+	horaTomada_id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    fecha DATETIME
 
+);
+
+ALTER TABLE horaTomada ADD usuaria_id INTEGER NOT NULL;
+ALTER TABLE horaTomada
+ADD FOREIGN KEY (usuaria_id) REFERENCES usuaria (usuaria_id);
+
+ALTER TABLE horaTomada ADD profesional_id INTEGER NOT NULL;
+ALTER TABLE horaTomada
+ADD FOREIGN KEY (profesional_id) REFERENCES profesional (profesional_id);
+
+#**************************************************************************
 #Eliminar la tabla producto
 #primero se elimina la relacion luego la tabla
 ALTER TABLE carritoBoleta DROP constraint carritoboleta_ibfk_1;
